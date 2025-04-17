@@ -20,16 +20,12 @@ const getAllCustomerIntoDB = async()=> {
 const getCustomerByIdIntoDB = async(customerId: string)=> {
 
 
-    const verifyCustomer = await prisma.customer.findUnique({
-        where: {customerId}
-    })
-    if(!verifyCustomer){
-        throw new AppError(httpStatus.NOT_FOUND, "Customer Not Found!")
-    }
-
     const customer = await prisma.customer.findUnique({
         where: {customerId}
     })
+    if(!customer){
+        throw new AppError(httpStatus.NOT_FOUND, "Customer Not Found!")
+    }
     return customer
 }
 
