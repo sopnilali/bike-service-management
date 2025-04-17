@@ -31,7 +31,7 @@ const getCustomerByIdIntoDB = (customerId) => __awaiter(void 0, void 0, void 0, 
         where: { customerId }
     });
     if (!verifyCustomer) {
-        throw new AppError_1.default(http_status_1.default.NOT_FOUND, "Customer Not Found");
+        throw new AppError_1.default(http_status_1.default.NOT_FOUND, "Customer Not Found!");
     }
     const customer = yield prisma_1.default.customer.findUnique({
         where: { customerId }
