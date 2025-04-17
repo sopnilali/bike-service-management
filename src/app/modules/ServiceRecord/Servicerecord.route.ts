@@ -1,12 +1,14 @@
 import express from 'express'
 import { ServiceRecordController } from './Servicerecord.controller';
+import validationRequest from '../../middlewares/validationRequest';
+import { ServiceRecordValidate } from './Servicerecord.validation';
 
 const router = express.Router();
 router.get('/status', ServiceRecordController.geServiceRecordStatus)
-router.post('/', ServiceRecordController.CreateServiceRecord)
+router.post('/', validationRequest(ServiceRecordValidate.createServiceRecordValidateSchema), ServiceRecordController.CreateServiceRecord)
 router.get('/', ServiceRecordController.getAllServiceRecord)
 router.get('/:id', ServiceRecordController.getServiceRecordById)
-router.put('/:id', ServiceRecordController.updateServiceRecord)
+router.put('/:id/complete',validationRequest(ServiceRecordValidate.updateServiceRecordValidateSchema), ServiceRecordController.updateServiceRecord)
 router.delete('/:id', ServiceRecordController.deleteServiceRecord )
 
 

@@ -2,6 +2,7 @@ import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { RecordService } from "./Servicerecord.service";
 
+// Create a service record
 const CreateServiceRecord  = catchAsync(async(req, res)=> {
     const result = await RecordService.createServiceIntoDB(req.body)
     sendResponse(res, {
@@ -11,6 +12,7 @@ const CreateServiceRecord  = catchAsync(async(req, res)=> {
     })
 })
 
+// Get all service records
 const getAllServiceRecord = catchAsync(async(req, res)=> {
     const result = await RecordService.getAllServiceRecordIntoDB()
     sendResponse(res, {
@@ -19,16 +21,7 @@ const getAllServiceRecord = catchAsync(async(req, res)=> {
         data: result
     })
 })
-
-const geServiceRecordStatus = catchAsync(async(req, res)=> {
-    const result = await RecordService.geServiceRecordStatusIntoDB()
-    sendResponse(res, {
-        success: true,
-        message: "Overdue or pending services fetched successfully ✅",
-        data: result
-    })
-})
-
+// Get a specific service record
 const getServiceRecordById = catchAsync(async(req, res)=> {
     const {id}= req.params
     const result = await RecordService.getServiceRecordByIdIntoDB(id)
@@ -39,6 +32,7 @@ const getServiceRecordById = catchAsync(async(req, res)=> {
     })
 })
 
+// Mark a service as completed
 const updateServiceRecord = catchAsync(async(req, res)=> {
     const {id}= req.params
     const result = await RecordService.updateServiceRecordIntoDB(id, req.body)
@@ -55,6 +49,16 @@ const deleteServiceRecord = catchAsync(async(req, res)=> {
     sendResponse(res, {
         success: true,
         message: "Service record delete successfully ✅",
+    })
+})
+
+
+const geServiceRecordStatus = catchAsync(async(req, res)=> {
+    const result = await RecordService.geServiceRecordStatusIntoDB()
+    sendResponse(res, {
+        success: true,
+        message: "Overdue or pending services fetched successfully ✅",
+        data: result
     })
 })
 

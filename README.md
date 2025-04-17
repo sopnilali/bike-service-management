@@ -9,11 +9,13 @@
 
 
 # 🎯 Project Summery
+
 <p>
 Develop a backend API for a Bike Servicing Management System that allows a bike servicing center to manage customers, bikes, and service records. The API will support CRUD operations for bikes, customers, and services.
  </p>
 
 # 🛠 Techonology Used
+
 <li>Node.js</li>
 <li>Express.js</li>
 <li>TypeScript</li>

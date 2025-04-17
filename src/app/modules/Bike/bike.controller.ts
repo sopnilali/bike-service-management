@@ -3,7 +3,7 @@ import httpStatus from 'http-status'
 import { BikeService } from "./bike.service";
 import sendResponse from "../../utils/sendResponse";
 
-
+// Add a new bike
 const createBike = catchAsync(async(req, res)=> {
     const result = await BikeService.createBikeIntoDB(req.body)
     sendResponse(res, {
@@ -13,6 +13,7 @@ const createBike = catchAsync(async(req, res)=> {
     })
 })
 
+// Get all bikes
 const getAllBikes = catchAsync(async(req, res)=> {
     const result = await BikeService.getAllBikesIntoDB();
     sendResponse(res, {
@@ -22,6 +23,7 @@ const getAllBikes = catchAsync(async(req, res)=> {
     })
 })
 
+// Get a specific bike by ID
 const getBikeById = catchAsync(async(req, res)=> {
     const {id}= req.params
     const result = await BikeService.getBikesByIdIntoDB(id);
@@ -31,7 +33,7 @@ const getBikeById = catchAsync(async(req, res)=> {
         data: result
     })
 })
-
+// update bike by ID
 const updateBike = catchAsync(async(req, res)=> {
     const {id}= req.params
     const result = await BikeService.updateBikeIntoDB(id, req.body);
@@ -42,6 +44,7 @@ const updateBike = catchAsync(async(req, res)=> {
     })
 })
 
+// delete bike by ID
 const deleteBike = catchAsync(async(req, res)=> {
     const {id}= req.params
     const result = await BikeService.deleteBikeIntoDB(id);

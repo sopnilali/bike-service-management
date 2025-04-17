@@ -7,6 +7,7 @@ exports.BikeController = void 0;
 const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const bike_service_1 = require("./bike.service");
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
+// Add a new bike
 const createBike = (0, catchAsync_1.default)(async (req, res) => {
     const result = await bike_service_1.BikeService.createBikeIntoDB(req.body);
     (0, sendResponse_1.default)(res, {
@@ -15,6 +16,7 @@ const createBike = (0, catchAsync_1.default)(async (req, res) => {
         data: result
     });
 });
+// Get all bikes
 const getAllBikes = (0, catchAsync_1.default)(async (req, res) => {
     const result = await bike_service_1.BikeService.getAllBikesIntoDB();
     (0, sendResponse_1.default)(res, {
@@ -23,6 +25,7 @@ const getAllBikes = (0, catchAsync_1.default)(async (req, res) => {
         data: result
     });
 });
+// Get a specific bike by ID
 const getBikeById = (0, catchAsync_1.default)(async (req, res) => {
     const { id } = req.params;
     const result = await bike_service_1.BikeService.getBikesByIdIntoDB(id);
@@ -32,6 +35,7 @@ const getBikeById = (0, catchAsync_1.default)(async (req, res) => {
         data: result
     });
 });
+// update bike by ID
 const updateBike = (0, catchAsync_1.default)(async (req, res) => {
     const { id } = req.params;
     const result = await bike_service_1.BikeService.updateBikeIntoDB(id, req.body);
@@ -41,6 +45,7 @@ const updateBike = (0, catchAsync_1.default)(async (req, res) => {
         data: result
     });
 });
+// delete bike by ID
 const deleteBike = (0, catchAsync_1.default)(async (req, res) => {
     const { id } = req.params;
     const result = await bike_service_1.BikeService.deleteBikeIntoDB(id);
