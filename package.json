@@ -9,8 +9,8 @@
     "postinstall": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["bike service"],
+  "author": "sopnil",
   "license": "ISC",
   "description": "",
   "devDependencies": {
