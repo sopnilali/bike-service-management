@@ -146,7 +146,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\projects\\prisma\\bikeService-management-api\\prisma\\generated\\client",
+      "value": "C:\\projects\\prisma\\bikeService-management-api\\prisma\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -183,8 +183,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Customer {\n  customerId String   @id @default(uuid())\n  name       String\n  email      String   @unique\n  phone      String\n  createdAt  DateTime @default(now())\n  bike       Bike[]\n\n  @@index([email])\n  @@map(\"customers\")\n}\n\nmodel Bike {\n  bikeId        String          @id @default(uuid())\n  brand         String\n  model         String\n  year          Int\n  customerId    String\n  customer      Customer        @relation(fields: [customerId], references: [customerId])\n  serviceRecord ServiceRecord[]\n\n  @@index([customerId])\n  @@map(\"bikes\")\n}\n\nmodel ServiceRecord {\n  serviceId      String    @id @default(uuid())\n  bikeId         String\n  bike           Bike      @relation(fields: [bikeId], references: [bikeId])\n  serviceDate    DateTime\n  completionDate DateTime?\n  description    String\n  status         String // \"pending\", \"in-progress\", \"done\"\n\n  @@index([bikeId])\n  @@map(\"servicerecords\")\n}\n",
-  "inlineSchemaHash": "3f8ade3ea44e059b63f8304b7f8b18a75097d6886503f0ca39f3d36b179ce34c",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Customer {\n  customerId String   @id @default(uuid())\n  name       String\n  email      String   @unique\n  phone      String\n  createdAt  DateTime @default(now())\n  bike       Bike[]\n\n  @@index([email])\n  @@map(\"customers\")\n}\n\nmodel Bike {\n  bikeId        String          @id @default(uuid())\n  brand         String\n  model         String\n  year          Int\n  customerId    String\n  customer      Customer        @relation(fields: [customerId], references: [customerId])\n  serviceRecord ServiceRecord[]\n\n  @@index([customerId])\n  @@map(\"bikes\")\n}\n\nmodel ServiceRecord {\n  serviceId      String    @id @default(uuid())\n  bikeId         String\n  bike           Bike      @relation(fields: [bikeId], references: [bikeId])\n  serviceDate    DateTime\n  completionDate DateTime?\n  description    String\n  status         String // \"pending\", \"in-progress\", \"done\"\n\n  @@index([bikeId])\n  @@map(\"servicerecords\")\n}\n",
+  "inlineSchemaHash": "b5a9b3f20bbb25c1ef4029c03c9d5721cc6c8a8248db7ba674391822417caae7",
   "copyEngine": true
 }
 config.dirname = '/'
